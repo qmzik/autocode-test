@@ -45,6 +45,7 @@ export default class Login extends Vue {
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 0 33px;
 }
 
 .login__form {
@@ -54,6 +55,7 @@ export default class Login extends Vue {
     background-color: $white;
     border-radius: 8px;
     padding: 30px 76px;
+    box-sizing: border-box;
 }
 
 .form__input {
@@ -72,5 +74,14 @@ export default class Login extends Vue {
 
 .login__title {
     color: $blue;
+    font-size: 24px;
+    margin: 0;
 }
+
+@media only screen and (max-width: $tablet) {
+    .login__form {
+        padding: 30px 35px;
+    }
+}
+
 </style>
