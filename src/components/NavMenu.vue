@@ -2,12 +2,13 @@
     <nav class="navMenu">
         <h1 class="navMenu__title">Demo application</h1>
         <NavMenuButton class="navMenu__btn" routeName="Home">Список отчётов</NavMenuButton>
-        <NavMenuButton class="navMenu__btn" routeName="Login">Выход</NavMenuButton>
+        <NavMenuButton @click.native="logout" class="navMenu__btn" routeName="Login">Выход</NavMenuButton>
     </nav>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { AuthModule } from '../store/modules/auth';
 
 @Component({
     components: {
@@ -15,7 +16,9 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
     },
 })
 export default class NavMenu extends Vue {
-
+    private logout(): void {
+        AuthModule.logout();
+    }
 }
 </script>
 

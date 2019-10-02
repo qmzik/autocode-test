@@ -19,6 +19,17 @@ class Auth extends VuexModule {
         this.setAuthData(user);
     }
 
+    @Action
+    public logout(): void {
+        this.clearAuthData();
+    }
+
+    @Mutation
+    private clearAuthData(): void {
+        localStorage.removeItem('login');
+        localStorage.removeItem('loginDate');
+    }
+
     @Mutation
     private setAuthData(user: IAuth): void {
         localStorage.setItem('login', user.login);
