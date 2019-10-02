@@ -1,12 +1,14 @@
 <template>
     <label class="appInput">
-        <span class="appInput__label label">{{ label }}</span>
+        <span class="appInput__label label"
+              :class="{ 'label_small': size === 'small', 'label_medium': size === 'medium' }"
+        >{{ label }}</span>
         <input class="input"
                :type="type"
                :placeholder="placeholder"
                v-model.trim="input"
                @input="handleInput"
-               :class="size"
+               :class="[size, { 'input_small': size === 'small', 'input_medium': size === 'medium' }]"
         >
     </label>
 </template>
@@ -18,7 +20,7 @@ import { mixins } from 'vue-class-component';
 
 @Component
 export default class AppInput extends mixins(InputMixin) {
-    @Prop({ default: 'input_medium' }) private size!: 'input_small' | 'input_medium';
+    @Prop({ default: 'medium' }) private size!: 'small' | 'medium';
     @Prop({ default: 'text' }) private type!: string;
 
     private handleInput(e: InputEvent): void {
