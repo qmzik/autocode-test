@@ -22,7 +22,7 @@ class Auth extends VuexModule {
     @Mutation
     private setAuthData(user: IAuth): void {
         localStorage.setItem('login', user.login);
-        localStorage.setItem('data', String(user.date));
+        localStorage.setItem('loginDate', String(user.date));
     }
 }
 
