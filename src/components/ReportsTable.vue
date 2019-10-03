@@ -41,5 +41,7 @@ export default class ReportsTable extends Vue {
 
 .reportsTable__values {
     font-weight: bold;
+    font-size: 14px;
+    margin-top: 19px;
 }
 </style>
