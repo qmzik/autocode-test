@@ -4,6 +4,7 @@
         <li>{{ typeId }}</li>
         <li>{{ stringDate }}</li>
         <li>{{ status }}</li>
+        <li><i class="icon-trash" @click="removeReport"></i></li>
     </ul>
 </template>
 

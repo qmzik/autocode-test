@@ -11,6 +11,17 @@ class Report extends VuexModule {
         this.setReport(report);
     }
 
+    @Action
+    public removeReport(id: string): void {
+        this.deleteFromReports(id);
+    }
+
+    @Mutation
+    private deleteFromReports(id: string): void {
+        const index = this.reports.findIndex((item) => item.id === id);
+        this.reports.splice(index, 1);
+    }
+
     @Mutation
     private setReport(report: IReport): void {
         this.reports.push(report);
