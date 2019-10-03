@@ -3,6 +3,7 @@
         <NavMenu></NavMenu>
         <main class="home__main">
             <CreateReport></CreateReport>
+            <ReportsTable class="home__reportsTable"></ReportsTable>
         </main>
     </div>
 </template>
@@ -14,6 +15,7 @@ import { Component, Vue } from 'vue-property-decorator';
     components: {
         NavMenu: () => import('@/components/NavMenu.vue'),
         CreateReport: () => import('@/components/CreateReport.vue'),
+        ReportsTable: () => import('@/components/ReportsTable.vue'),
     },
 })
 export default class Home extends Vue {
@@ -27,8 +29,12 @@ export default class Home extends Vue {
 }
 
 .home__main {
-    width: 100%;
+    flex: auto;
     padding: 25px 15px;
     background-color: $dark-white;
+}
+
+.home__reportsTable {
+    margin-top: 25px;
 }
 </style>
