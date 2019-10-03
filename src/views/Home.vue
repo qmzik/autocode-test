@@ -32,6 +32,7 @@ export default class Home extends Vue {
     flex: auto;
     padding: 25px 15px;
     background-color: $dark-white;
+    overflow: auto;
 }
 
 .home__reportsTable {
