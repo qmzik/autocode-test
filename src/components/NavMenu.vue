@@ -1,8 +1,8 @@
 <template>
     <nav class="navMenu">
         <h1 class="navMenu__title">Demo application</h1>
-        <NavMenuButton class="navMenu__btn" routeName="Home">Список отчётов</NavMenuButton>
-        <NavMenuButton @click.native="logout" class="navMenu__btn" routeName="Login">Выход</NavMenuButton>
+        <NavMenuButton class="navMenu__btn" routeName="Home" icon="list">Список отчётов</NavMenuButton>
+        <NavMenuButton @click.native="logout" class="navMenu__btn" routeName="Login" icon="power">Выход</NavMenuButton>
     </nav>
 </template>
 
@@ -39,5 +39,14 @@ export default class NavMenu extends Vue {
 
 .navMenu__btn:first-of-type {
     margin-top: 63px;
+}
+
+@media only screen and (max-width: $tablet) {
+    .navMenu__title {
+        display: none;
+    }
+    .navMenu {
+        width: 35px;
+    }
 }
 </style>
