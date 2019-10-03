@@ -1,6 +1,6 @@
 <template>
     <section class="section reportsTable">
-        <h2 class="section__title">Все отчёты</h2>
+        <h2 class="section__title reportsTable__title">Все отчёты</h2>
         <div class="reportsTable__table">
             <ul class="reportsTable__values list_default grid">
                 <li>Индентификатор</li>
@@ -42,6 +42,30 @@ export default class ReportsTable extends Vue {
 .reportsTable__values {
     font-weight: bold;
     font-size: 14px;
-    margin-top: 19px;
+    margin-bottom: 12px;
+}
+
+.reportsTable {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.reportsTable__title,
+.reportsTable__values {
+    margin-left: 15px;
+}
+
+.reportsTable__title {
+    margin-bottom: 19px;
+}
+
+.reportsTable__table {
+    border-bottom: 1px solid $light-grey;
+}
+
+@media only screen and (max-width: $tablet) {
+    .reportsTable__values {
+        display: none;
+    }
 }
 </style>

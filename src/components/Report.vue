@@ -1,10 +1,10 @@
 <template>
     <ul class="report grid list_default">
-        <li>{{ id }}</li>
-        <li>{{ typeId }}</li>
-        <li>{{ stringDate }}</li>
-        <li><ReportStatus :status="status"></ReportStatus></li>
-        <li><i class="icon-trash" @click="removeReport"></i></li>
+        <li class="report__item report__id">{{ id }}</li>
+        <li class="report__item report__typeId">{{ typeId }}</li>
+        <li class="report__item report__date">{{ stringDate }}</li>
+        <li class="report__item report__status"><ReportStatus :status="status"></ReportStatus></li>
+        <li class="report__item report__trash"><i class="icon-trash" @click="removeReport"></i></li>
     </ul>
 </template>
 
@@ -39,10 +39,32 @@ export default class Report extends Vue {
 .report {
     font-size: 14px;
     padding: 15px 0;
+    align-items: center;
+    border-top: 1px solid $light-grey;
+}
+
+.report__id {
+    margin-left: 15px;
 }
 
 .icon-trash {
     font-size: 20px;
     cursor: pointer;
+}
+
+@media only screen and (max-width: $tablet) {
+    .report {
+        grid-template-columns: 4fr repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+    .report__date {
+        margin-left: 15px;
+        grid-row: 2 / 3;
+    }
+
+    .report__status {
+        grid-row: 2 / 3;
+    }
 }
 </style>
