@@ -14,6 +14,10 @@ export default class InputMixin extends Vue {
     protected handleInput(e: InputEvent): void {
         this.$emit('input', (e.target as HTMLInputElement).value);
     }
+
+    private mounted(): void {
+        this.input = this.value;
+    }
 }
 </script>
 
