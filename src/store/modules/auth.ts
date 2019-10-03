@@ -3,6 +3,7 @@ import { VuexModule, Module, Action, getModule, Mutation } from 'vuex-module-dec
 import store from '@/store/store';
 import router from '@/router';
 import { IAuth } from '@/store/types';
+import { ReportModule } from './report';
 const HOUR_IN_MILLISEC = 1000 * 60 * 60;
 
 @Module({ name: 'auth', store, dynamic: true })
@@ -22,6 +23,7 @@ class Auth extends VuexModule {
     @Action
     public logout(): void {
         this.clearAuthData();
+        ReportModule.clearReports();
     }
 
     @Mutation

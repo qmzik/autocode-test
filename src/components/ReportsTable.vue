@@ -33,6 +33,10 @@ export default class ReportsTable extends Vue {
     private get reports(): IReport[] {
         return ReportModule.reports;
     }
+
+    private mounted(): void {
+        ReportModule.parseStore();
+    }
 }
 </script>
 
