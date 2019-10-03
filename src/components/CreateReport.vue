@@ -54,4 +54,16 @@ export default class CreateReport extends Vue {
     width: 169px;
     height: 40px;
 }
+
+@media only screen and (max-width: $tablet) {
+    .createReport__form {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .createReport__form > *:not(:first-child) {
+        margin-left: 0;
+        margin-top: 12px;
+    }
+}
 </style>
