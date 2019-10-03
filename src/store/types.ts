@@ -4,8 +4,8 @@ export interface IAuth {
 }
 
 export interface IReport {
-    type: 'VIN' | 'ГРЗ' | 'BODY';
+    typeId: string;
     id: string;
     date: number;
-    status: 'DONE' | 'PROGRESS' | 'ERROR';
+    status: string;
 }
