@@ -83,5 +83,4 @@ export default class Login extends Vue {
         padding: 30px 35px;
     }
 }
-
 </style>
