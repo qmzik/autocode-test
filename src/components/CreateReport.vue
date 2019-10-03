@@ -4,7 +4,7 @@
         <form class="createReport__form">
             <AppInput v-model="id" label="Идентификатор" placeholder="A007AA197" size="small"></AppInput>
             <AppSelect v-model="typeId" label="Тип идентификатора" :options="reportIdTypes" size="small"></AppSelect>
-            <AppButton :click="addReport" class="form__btn">Создать</AppButton>
+            <AppButton :click="addReport" class="form__btn" :disabled="!isIdValid">Создать</AppButton>
         </form>
     </section>
 </template>
@@ -14,6 +14,8 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import reportIdTypes from '@/consts/reportIdType';
 import { ReportModule } from '@/store/modules/report';
 import { chooseStatus } from '../utils/reportUtil';
+import { VIN_REGEXP, GRZ_REGEXP, BODY_REGEXP } from '../consts/regExps';
+import Notify from '@/components/Notify/notify';
 
 @Component({
     components: {
@@ -28,11 +30,33 @@ export default class CreateReport extends Vue {
     private id: string = '';
     private typeId: string = this.reportIdTypes[0];
 
+    private get isIdValid(): boolean {
+        if (this.typeId === 'VIN') {
+            return VIN_REGEXP.test(this.id);
+        }
+
+        if (this.typeId === 'ГРЗ') {
+            return GRZ_REGEXP.test(this.id);
+        }
+
+        if (this.typeId === 'BODY') {
+            return BODY_REGEXP.test(this.id);
+        }
+
+        return true;
+    }
+
     private addReport(): void {
         const { id, typeId } = this;
-        const date = +new Date();
-        const status = chooseStatus();
-        ReportModule.addReport({ id, typeId, date, status });
+        const founded = ReportModule.reports.find((item) => item.id === id);
+        if (!founded) {
+            const date = +new Date();
+            const status = chooseStatus();
+            Notify({ msg: 'Отчёт добавлен' });
+            ReportModule.addReport({ id, typeId, date, status });
+        } else {
+            Notify({ msg: 'Такой индентификатор уже добавлен' });
+        }
     }
 }
 </script>
